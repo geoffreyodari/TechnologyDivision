@@ -2,6 +2,7 @@ import models.Staff;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,29 +15,45 @@ public class App {
 
 
         //home page
+//        get("/", (request, response) -> {
+//
+//            return new ModelAndView(new HashMap(), "index.hbs");
+//
+//        }, new HandlebarsTemplateEngine());
+
         get("/", (request, response) -> {
-
-            return new ModelAndView(new HashMap(), "index.hbs");
-
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("myStaff", request.session().attribute("myStaffList"));
+            return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
 
         //departments view
         get("/departments", (request, response) -> {
 
-            return new ModelAndView(new HashMap(), "departments.hbs");
+            return new ModelAndView(new HashMap(), "success.hbs");
 
         }, new HandlebarsTemplateEngine());
 
-        //departments view
-        get("/department", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+        //save contact
+        get("/save", (request, response) -> {
+
             String name = request.queryParams("name");
             String role = request.queryParams("role");
-            model.put("name", name);
-            model.put("role", role);
-            return new ModelAndView(model, "department.hbs");
+            String department = request.queryParams("department");
+            String division = request.queryParams("division");
+
+            Staff staff = new Staff(name,role,department,division);
+            Map<String, ArrayList<Staff>> model = new HashMap<>();
+            ArrayList myStaffArrayList = Staff.getAll();
+
+            request.session().attribute("myStaffList",myStaffArrayList);
+
+            model.put("myStaff", request.session().attribute("myStaffList") );
+            return new ModelAndView(model, "success.hbs");
+
         }, new HandlebarsTemplateEngine());
+
 
         //form view
         get("/add", (request, response) -> {

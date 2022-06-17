@@ -21,6 +21,11 @@ public class Staff {
         return mInstances;
     }
 
+    public boolean notEmpty(){
+        return mInstances.size() >0;
+    }
+
+
     public String getName(){
         //returns the staff name
         return this.staffName;

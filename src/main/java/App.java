@@ -23,14 +23,14 @@ public class App {
         //departments view
         get("/departments", (request, response) -> {
 
-            return new ModelAndView(new HashMap(), "index.hbs");
+            return new ModelAndView(new HashMap(), "department.hbs");
 
         }, new HandlebarsTemplateEngine());
 
         //form view
         get("/add", (request, response) -> {
 
-            return new ModelAndView(new HashMap(), "index.hbs");
+            return new ModelAndView(new HashMap(), "form.hbs");
 
         }, new HandlebarsTemplateEngine());
 

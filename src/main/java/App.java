@@ -1,5 +1,8 @@
 import models.Staff;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import static spark.Spark.*;
@@ -8,9 +11,11 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-        //get("/",(request,response)->"hello");
+        get("/", (request, response) -> {
 
-        //Staff staff = new Staff(name,role,department,division);
+            return new ModelAndView(new HashMap(), "index.hbs");
+
+        }, new HandlebarsTemplateEngine());
 
 
     }

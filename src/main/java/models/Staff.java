@@ -1,16 +1,24 @@
 package models;
 
+import java.util.ArrayList;
 public class Staff {
+
     private String staffName;
     private String role;
     private String department;
     private String division;
+    private static ArrayList<Staff> mInstances = new ArrayList<>();
 
     public  Staff(String staffName,String role, String department,String division){
        this.staffName =  staffName;
        this.role = role;
        this.department = department;
        this.division = division;
+       this.mInstances.add(this);
+    }
+
+    public static ArrayList<Staff> getAll() {
+        return mInstances;
     }
 
     public String getName(){

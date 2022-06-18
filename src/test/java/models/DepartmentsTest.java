@@ -11,4 +11,11 @@ public class DepartmentsTest {
         assertEquals(true,testDepartment instanceof  Departments);
     }
 
+    @Test
+    public void department_getsName(){
+        Departments myDepartment = new Departments("finance");
+        assertEquals("finance",myDepartment.getName());
+
+    }
+
 }

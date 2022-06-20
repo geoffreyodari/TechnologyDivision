@@ -1,7 +1,7 @@
 {{#partial "content"}}
     <div class="list-group list-group-flush col-3">
         {{#each myDepartments}}
-            <a type="button" class="list-group-item list-group-item-action">{{name}}</a>
+            <a type="button" class="list-group-item list-group-item-action" href="/departments?department={{name}}">{{name}}</a>
         {{/each}}
             <a type="button" class="list-group-item list-group-item-action" href="/add_department">Add department</a>
     </div>

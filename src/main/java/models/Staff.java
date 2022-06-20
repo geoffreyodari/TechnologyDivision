@@ -5,24 +5,20 @@ public class Staff {
 
     private String staffName;
     private String role;
-    private String department;
-    private String division;
+    private int departmentId;
+
     private static ArrayList<Staff> mInstances = new ArrayList<>();
 
-    public  Staff(String staffName,String role, String department,String division){
+    public  Staff(String staffName,String role,int departmentId){
        this.staffName =  staffName;
        this.role = role;
-       this.department = department;
-       this.division = division;
+       this.departmentId = departmentId;
        this.mInstances.add(this);
+
     }
 
     public static ArrayList<Staff> getAll() {
         return mInstances;
-    }
-
-    public boolean notEmpty(){
-        return mInstances.size() >0;
     }
 
 
@@ -36,15 +32,7 @@ public class Staff {
         return this.role;
     }
 
-    public String getDepartment(){
-        //returns the staff Department
-        return this.department;
-    }
 
-    public String getDivision(){
-        //returns the staff Division
-        return this.division;
-    }
 
 
 

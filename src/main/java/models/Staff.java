@@ -5,13 +5,15 @@ public class Staff {
 
     private String staffName;
     private String role;
+    private String responsibility;
     private int departmentId;
 
     private static ArrayList<Staff> mInstances = new ArrayList<>();
 
-    public  Staff(String staffName,String role,int departmentId){
+    public  Staff(String staffName,String role,String responsibility ,int departmentId){
        this.staffName =  staffName;
        this.role = role;
+       this.responsibility = responsibility;
        this.departmentId = departmentId;
        this.mInstances.add(this);
 
@@ -32,6 +34,10 @@ public class Staff {
         return this.role;
     }
 
+    public String getResponsibility(){
+        //returns the staff responsibility
+        return this.responsibility;
+    }
 
 
 

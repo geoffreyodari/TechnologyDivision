@@ -24,8 +24,14 @@ public class StaffTest {
         assertEquals("Quality Analyst", testStaff.getRole());
     }
 
+    @Test
+    public void newStaff_getsResponsibility() {
+        Staff testStaff = newStaff();
+        assertEquals("checks quality", testStaff.getResponsibility());
+    }
+
     public Staff newStaff(){
-        return new Staff("james","Quality Analyst",1);
+        return new Staff("james","Quality Analyst","checks quality",1);
     }
 
 

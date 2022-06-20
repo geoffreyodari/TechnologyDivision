@@ -48,9 +48,10 @@ public class App {
         get("/save_staff", (request, response) -> {
             String name = request.queryParams("name");
             String role = request.queryParams("role");
+            String responsibility = request.queryParams("responsibility");
             int categoryId = Integer.parseInt(request.queryParams("id"));
 
-            Staff staff = new Staff(name,role,categoryId);
+            Staff staff = new Staff(name,role,responsibility,categoryId);
             Map<String, ArrayList<Staff>> model = new HashMap<>();
             ArrayList myStaffArrayList = Staff.getAll();
             request.session().attribute("myStaffList",myStaffArrayList);

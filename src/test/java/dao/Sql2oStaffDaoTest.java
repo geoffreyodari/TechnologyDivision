@@ -55,7 +55,39 @@ public class Sql2oStaffDaoTest {
     }
 
 
+    @Test
+    public void updateChangesStaffRole() throws Exception {
+        String role = "Quality Analyst";
+        Staff staff = new Staff("geoffrey",role,"project manager",1);
+        staffDao.add(staff);
 
+        staffDao.update(staff.getId(),"Developer");
+        Staff updatedStaff = staffDao.findById(staff.getId()); //why do I need to refind this?
+        assertNotEquals(role, updatedStaff.getRole());
+    }
 
+    @Test
+    public void deleteByIdDeletesCorrectStaff() throws Exception {
+        Staff staff = new Staff("geoffrey","manager","project manager",1);;
+        staffDao.add(staff);
+        staffDao.deleteById(staff.getId());
+        assertEquals(0, staffDao.getAll().size());
+    }
+
+    @Test
+    public void deleteAllClearsAll() throws Exception {
+        Staff staff = new Staff("geoffrey","manager","project manager",1);
+        Staff otherStaff = new Staff("James","Accountant","Accounts",3);
+        staffDao.add(staff);
+        staffDao.add(otherStaff);
+        int daoSize = staffDao.getAll().size();
+        staffDao.deleteAllStaff();
+        assertTrue(daoSize > 0 && daoSize > staffDao.getAll().size());
+    }
 
 }
+
+
+
+
+

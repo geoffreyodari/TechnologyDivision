@@ -17,10 +17,10 @@ public interface StaffDao {
         Staff findById(int id);
 
         // UPDATE
-        // void update(int id, String content);
+        void update(int id, String content);
 
         // DELETE
-        // void deleteById(int id);
-        // void clearAllStaff();
+        void deleteById(int id);
+        void clearAllStaff();
 
 }

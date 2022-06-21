@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Staff {
 
-    private String staffName;
+    private String name;
     private String role;
     private String responsibility;
     private int id;
@@ -13,8 +13,8 @@ public class Staff {
 
     private static ArrayList<Staff> mInstances = new ArrayList<>();
 
-    public  Staff(String staffName,String role,String responsibility ,int departmentId){
-       this.staffName =  staffName;
+    public  Staff(String name,String role,String responsibility ,int departmentId){
+       this.name =  name;
        this.role = role;
        this.responsibility = responsibility;
        this.departmentId = departmentId;
@@ -46,7 +46,7 @@ public class Staff {
 
     public String getName(){
         //returns the staff name
-        return this.staffName;
+        return this.name;
     }
 
     public String getRole(){
@@ -62,6 +62,11 @@ public class Staff {
     public String getResponsibility(){
         //returns the staff responsibility
         return this.responsibility;
+    }
+
+    public int getDepartmentId(){
+        //returns the staff responsibility
+        return this.departmentId;
     }
 
     public void setId(int id) {

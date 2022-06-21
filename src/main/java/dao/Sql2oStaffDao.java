@@ -43,12 +43,11 @@ public class Sql2oStaffDao implements StaffDao {
     }
 
     @Override
-    public void update(int id,String role, String department){
+    public void update(int id,String role){
         String sql = "UPDATE staff SET role = :role, department = :department WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("role", role)
-                    .addParameter("department", department)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

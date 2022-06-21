@@ -21,6 +21,6 @@ public interface StaffDao {
 
         // DELETE
         void deleteById(int id);
-        void clearAllStaff();
+        void deleteAllStaff();
 
 }

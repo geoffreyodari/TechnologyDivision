@@ -4,6 +4,7 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,20 +18,21 @@ public class App {
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("myStaff", request.session().attribute("myStaffList"));
-            return new ModelAndView(model, "index.hbs");
+            model.put("myDepartments", request.session().attribute("myDepartments"));
+            return new ModelAndView(model, "read-staff.hbs");
         }, new HandlebarsTemplateEngine());
 
 
         //departments view
         get("/add_department", (request, response) -> {
-            return new ModelAndView(new HashMap(), "departmentForm.hbs");
+            return new ModelAndView(new HashMap(), "create-department-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //staff view
         get("/add_staff", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("myDepartments", request.session().attribute("myDepartments"));
-            return new ModelAndView(model, "form.hbs");
+            return new ModelAndView(model, "create-staff-form.hbs");
         }, new HandlebarsTemplateEngine());
 
 
@@ -49,14 +51,14 @@ public class App {
             String name = request.queryParams("name");
             String role = request.queryParams("role");
             String responsibility = request.queryParams("responsibility");
-            int categoryId = Integer.parseInt(request.queryParams("id"));
-
-            Staff staff = new Staff(name,role,responsibility,categoryId);
+            int departmentId = Integer.parseInt(request.queryParams("department"));
+            Staff staff = new Staff(name,role,responsibility,departmentId);
             Map<String, ArrayList<Staff>> model = new HashMap<>();
             ArrayList myStaffArrayList = Staff.getAll();
             request.session().attribute("myStaffList",myStaffArrayList);
             model.put("myStaff", request.session().attribute("myStaffList") );
-            return new ModelAndView(model, "success.hbs");
+            model.put("myDepartments", request.session().attribute("myDepartments"));
+            return new ModelAndView(model, "read-staff.hbs");
 
         }, new HandlebarsTemplateEngine());
 
@@ -69,7 +71,7 @@ public class App {
             ArrayList myDepartmentsArrayList = departments.getAll();
             request.session().attribute("myDepartments",myDepartmentsArrayList);
             model.put("myDepartments", request.session().attribute("myDepartments") );
-            return new ModelAndView(model, "departments.hbs");
+            return new ModelAndView(model, "read-departments.hbs");
         }, new HandlebarsTemplateEngine());
 
     }

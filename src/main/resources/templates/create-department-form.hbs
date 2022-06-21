@@ -1,20 +1,8 @@
 {{#partial "content"}}
-    
-  <div class="col-3">
-    <div class="list-group list-group-flush">
-      <a href="#" class="list-group-item list-group-item-dark list-group-item-action" aria-current="true">
-        
-        All Departments
-      </a>
-      {{#each myDepartments}}
-      <a href="#" class="list-group-item list-group-item-dark list-group-item-action">{{name}}</a>
-      {{/each}}   
-    </div>
-  </div>
-  <div class="col-9">
+  <div class="col-12">
     <h4>Department Form</h4>
     <div class="card bg-dark text-white mx-auto p-3">
-      <form action="">
+      <form action="/save_department">
         <div class="mb-3">
           <label for="name"  class="form-label">Department</label>
           <input type="text" id="name" name="name" class="form-control" placeholder="Name">

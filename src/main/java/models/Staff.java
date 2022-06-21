@@ -6,6 +6,8 @@ public class Staff {
     private String staffName;
     private String role;
     private String responsibility;
+
+    private int id;
     private int departmentId;
 
     private static ArrayList<Staff> mInstances = new ArrayList<>();
@@ -16,6 +18,7 @@ public class Staff {
        this.responsibility = responsibility;
        this.departmentId = departmentId;
        this.mInstances.add(this);
+       this.id = this.mInstances.size();
 
     }
 

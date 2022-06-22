@@ -80,19 +80,32 @@ public class App {
 
         //get: add new staff form
         get("/staff/new",(req,res)->{
-            return new ModelAndView(new HashMap<>(),"create-staff-form.hbs");
+            Map<String, Object> model = new HashMap<>();
+            List<Departments> departments = departmentsDao.getAll();
+            model.put("myDepartments",departments);
+            return new ModelAndView(model,"create-staff-form.hbs");
         },new HandlebarsTemplateEngine());
 
         //post: add new staff
         post("/staff/new",(req,res)->{
             String name = req.queryParams("name");
             String role = req.queryParams("role");
-            int departmentId = 1;
+            int departmentId = Integer.parseInt(req.queryParams("department"));
             String responsibility = req.queryParams("responsibility");
+            System.out.println(responsibility);
             Staff staff = new Staff(name,role,responsibility,departmentId);
             staffDao.add(staff);
             res.redirect("/");
             return null;
+        },new HandlebarsTemplateEngine());
+
+        //get: update staff form
+        get("/staff/update",(req,resp)->{
+            int id = Integer.parseInt(req.queryParams("id"));
+            Map<String,Object> model = new HashMap<String,Object>();
+            model.put("myStaff",staffDao.findById(id));
+            model.put("myDepartments",departmentsDao.getAll());
+            return new ModelAndView(model,"edit-staff-form.hbs");
         },new HandlebarsTemplateEngine());
 
 

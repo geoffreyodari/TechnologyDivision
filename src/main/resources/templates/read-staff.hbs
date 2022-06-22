@@ -33,10 +33,10 @@ All Departments
         <tr>
             <td>{{name}}</td>
             <td>{{role}}</td>
-            <td>{{department}}</td>
+            <td>{{responsibility}}</td>
             <td>
-                <a class="btn btn-sm btn-warning"href="/edit_staff?id={{id}}">Edit</a>
-                <a class="btn btn-sm btn-danger" href="/delete_staff?id={{id}}">Delete</a>
+                <a class="btn btn-sm btn-warning"href="/staff/update?id={{id}}">Edit</a>
+                <a class="btn btn-sm btn-danger" href="/staff/delete?id={{id}}">Delete</a>
             </td>
         </tr>
         {{/each}}

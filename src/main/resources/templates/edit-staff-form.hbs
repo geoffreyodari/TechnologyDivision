@@ -1,46 +1,40 @@
-
-
-        <div class="col-3">
-          <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-dark list-group-item-action" aria-current="true">
-              
-              All Departments
-            </a>
-            <a href="#" class="list-group-item list-group-item-dark list-group-item-action">Software design & development</a>
-            <a href="#" class="list-group-item list-group-item-dark  list-group-item-action">Infrastructure managemement</a>
-            <a href="#" class="list-group-item list-group-item-dark  list-group-item-action">DBA</a>
-            <a href="#" class="list-group-item list-group-item-dark  list-group-item-action">System Admins</a>
-            <a href="#" class="list-group-item list-group-item-dark  list-group-item-action">Information Security</a>
-          </div>
+{{#partial "content"}}
+    <div class="col-3">
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-dark list-group-item-action" aria-current="true">
+                    All Departments
+                </a>
+                {{#each myDepartments}}
+                    <a href="#" class="list-group-item list-group-item-dark list-group-item-action">{{name}}</a>
+                {{/each}}
+            </div>
         </div>
         
-
+        {{#if myStaff}}
         <div class="col-9">
           <h4>Staff Form</h4>
           <div class="card bg-dark text-white mx-auto p-3">
             <form action="">
               <div class="mb-3">
                 <label for="name"  class="form-label">Name</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{myStaff.name}}">
               </div>
               <div class="mb-3">
                 <label for="role"  class="form-label">Role</label>
-                <input type="text" id="role" name="role" class="form-control" placeholder="Role">
+                <input type="text" id="role" name="role" class="form-control" placeholder="Role" value="{{myStaff.role}}">
               </div>
               <div class="mb-3">
                 <label for="department" class="form-label">Department</label>
                 <select name="department" class="form-control"  id="department">
                   <option value="">Select a department</option>
-                  <option value="1">Software design & development</option>
-                  <option value="2">Infrastructure managemement</option>
-                  <option value="3">DBA</option>
-                  <option value="4">System Admins</option>
-                  <option value="5">Information Security</option>
+                    {{#each myDepartments}}
+                        <option value ="{{id}}">{{name}}</option>
+                    {{/each}}
                 </select>
               </div>
               <div class="mb-3">
                 <label for="name"  class="form-label">Responsibility</label>
-                <textarea id="name" name="name" class="form-control" placeholder="Responsibilities.."></textarea>
+                <input id="name" name="name" class="form-control" placeholder="Responsibilities.." value="{{myStaff.responsibility}}"/>
               </div>
               <div class="mb-3 text-center">
                 <input type="button" class="btn btn-warning" value="Save">
@@ -50,3 +44,6 @@
           </div>
           
         </div>
+        {{/if}}
+    {{/partial}}
+{{> layout.hbs}}

@@ -47,10 +47,10 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
 
     @Override
     public void update(int id, String name){
-        String sql = "UPDATE department SET name = :name WHERE id=:id";
+        String sql = "UPDATE departments SET name = :name WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("role", name)
+                    .addParameter("name", name)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
@@ -71,9 +71,11 @@ public class Sql2oDepartmentsDao implements DepartmentsDao{
     }
 
 
+
+
     @Override
     public void deleteAllDepartments() {
-        String sql = "DELETE from staff";
+        String sql = "DELETE from departments";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();

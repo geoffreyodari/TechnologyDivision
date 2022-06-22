@@ -14,7 +14,11 @@
         <div class="col-9">
           <h4>Staff Form</h4>
           <div class="card bg-dark text-white mx-auto p-3">
-            <form action="">
+            <form method="Post" action="/staff/update">
+                <div class="mb-3">
+                    <label for="id"  class="form-label">id</label>
+                    <input type="text" id="id" name="id" class="form-control" placeholder="id" value="{{myStaff.id}}">
+                </div>
               <div class="mb-3">
                 <label for="name"  class="form-label">Name</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{myStaff.name}}">
@@ -37,7 +41,7 @@
                 <input id="name" name="name" class="form-control" placeholder="Responsibilities.." value="{{myStaff.responsibility}}"/>
               </div>
               <div class="mb-3 text-center">
-                <input type="button" class="btn btn-warning" value="Save">
+                <input type="submit" class="btn btn-warning" value="Save">
               </div>
             </form>
 

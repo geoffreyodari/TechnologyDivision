@@ -108,6 +108,15 @@ public class App {
             return new ModelAndView(model,"edit-staff-form.hbs");
         },new HandlebarsTemplateEngine());
 
+        //post save staff update
+        post("/staff/update",(req,resp)->{
+            int id = Integer.parseInt(req.queryParams("id"));
+            String role = req.queryParams("role");
+            staffDao.update(id,role);
+            resp.redirect("/");
+            return null;
+        },new HandlebarsTemplateEngine());
+
 
 
 

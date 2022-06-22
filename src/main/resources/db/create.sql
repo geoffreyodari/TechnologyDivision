@@ -7,3 +7,9 @@ CREATE TABLE IF NOT EXISTS staff (
   responsibility VARCHAR,
   departmentId int,
 );
+
+
+CREATE TABLE IF NOT EXISTS departments (
+  id int PRIMARY KEY auto_increment,
+  name VARCHAR
+);

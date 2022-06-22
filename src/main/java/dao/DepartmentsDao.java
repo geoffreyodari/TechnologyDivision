@@ -19,5 +19,5 @@ public interface DepartmentsDao {
 
     //DELETE
     void deleteById(int id);
-    void clearAllCategories();
+    void deleteAllDepartments();
 }

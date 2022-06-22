@@ -26,4 +26,9 @@ public class Departments {
     }
 
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 }

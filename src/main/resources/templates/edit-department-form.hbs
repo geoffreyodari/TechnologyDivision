@@ -10,21 +10,26 @@
       {{/each}}   
     </div>
   </div>  
-
+    {{#if myDepartment}}
         <div class="col-9">
           <h4>Department Form</h4>
           <div class="card bg-dark text-white mx-auto p-3">
-            <form action="">
+            <form method="POST" action="/departments/save">
+                <div class="mb-3">
+                    <label for="id"  class="form-label">Department</label>
+                    <input type="text" id="id" name="id" class="form-control" placeholder="id" value="{{myDepartment.id}}">
+                </div>
               <div class="mb-3">
                 <label for="name"  class="form-label">Department</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{myDepartment.name}}">
               </div>
               <div class="mb-3 text-center">
-                <input type="button" class="btn btn-warning" value="Save">
+                <input type="submit" class="btn btn-warning" value="Save">
               </div>
             </form>
 
           </div>
+    {{/if}}
           
         </div>
 

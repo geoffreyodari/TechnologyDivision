@@ -1,29 +1,38 @@
 package dao;
 
 import models.Departments;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Sql2oDepartmentsDaoTest {
-    private Sql2oDepartmentsDao departmentsDao;
-    private Connection conn;
+    private static Sql2oDepartmentsDao departmentsDao;
 
-    @BeforeEach
-    public void setUp(){
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+    private static Sql2oStaffDao staffDao;
+    private static Connection conn;
+
+    @BeforeAll
+    public static void setUp() throws Exception{
+        String connectionString = "jdbc:postgresql://localhost:5432/technologydivision_test";
+        Sql2o sql2o = new Sql2o(connectionString, "postgres", null);
         departmentsDao = new Sql2oDepartmentsDao(sql2o);
+        staffDao = new Sql2oStaffDao(sql2o);
         conn = sql2o.open();
     }
 
     @AfterEach
     public void tearDown(){
-        conn.close();
+        System.out.println("clearing database");
+        departmentsDao.deleteAllDepartments();
+        staffDao.deleteAllStaff();
+    }
+
+    @AfterAll // changed to @AfterClass (run once after all tests in this file completed)
+    public static void shutDown() throws Exception { //changed to static and shutDown
+        conn.close(); // close connection once after this entire test file is finished
+        System.out.println("connection closed");
     }
 
 

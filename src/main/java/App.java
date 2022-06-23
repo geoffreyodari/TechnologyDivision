@@ -117,6 +117,25 @@ public class App {
             return null;
         },new HandlebarsTemplateEngine());
 
+        //get: delete staff
+        get("/staff/delete",(req,resp)->{
+            int id = Integer.parseInt(req.queryParams("id"));
+            staffDao.deleteById(id);
+            resp.redirect("/");
+            return null;
+        },new HandlebarsTemplateEngine());
+
+
+        //get: staff by department
+        get("/staff/department",(req,res)->{
+            int departmentId = Integer.parseInt(req.queryParams("id"));
+            Map<String,Object> model = new HashMap<>();
+            model.put("myStaff",staffDao.getByDepartment(departmentId));
+            model.put("myDepartments",departmentsDao.getAll());
+            return new ModelAndView(model,"read-staff.hbs");
+        },new HandlebarsTemplateEngine());
+
+
 
 
 

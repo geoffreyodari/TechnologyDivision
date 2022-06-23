@@ -34,6 +34,15 @@ public class Sql2oStaffDao implements StaffDao {
     }
 
     @Override
+    public List<Staff> getByDepartment(int departmentId) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM staff WHERE departmentId = :departmentId")
+                    .addParameter("departmentId", departmentId)
+                    .executeAndFetch(Staff.class);
+        }
+    }
+
+    @Override
     public Staff findById(int id) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM staff WHERE id = :id")

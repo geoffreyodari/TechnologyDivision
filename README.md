@@ -3,7 +3,7 @@ An application to keep track different departments and their staff, roles and re
 
 Created by Geoffrey Odari
 ## View demo
-https://
+https://technology-division.herokuapp.com/
 
 ### Authors
 Geoffrey Odari 

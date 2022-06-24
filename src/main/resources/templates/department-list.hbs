@@ -1,7 +1,7 @@
 {{#partial "content"}}
       <section class="container">
         <article>
-          <h5>All Department</h5>
+          <h5>All Departments</h5>
          {{#if myDepartments}}
           <table class="table table-borderless  mx-auto table-sm text-small">
             <thead class="table-success">
@@ -19,6 +19,10 @@
             {{/each}}
             </tbody>
           </table>
+         {{else}}
+             <div class="alert alert-warning mt-3" role="alert">
+                 We do not have any department at the moment. Click  <a href="/departments/new" class="alert-link">here</a> to add new department.
+             </div>
          {{/if}}
         </article>
       </section>

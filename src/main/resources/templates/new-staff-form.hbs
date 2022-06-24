@@ -1,6 +1,7 @@
 {{#partial "content"}}
       <section class="container">
         <article>
+            {{#if myDepartments}}
           <fieldset class="bg-cloudy-blue p-3 rounded shadow-sm">
             <legend>Add Staff</legend>
             <form action="/staff/new" method="post" >
@@ -32,7 +33,11 @@
             </form> 
 
           </fieldset>
-          
+            {{else}}
+                    <div class="alert alert-warning mt-3" role="alert">
+                        We do not have any department at the moment. Click  <a href="/departments/new" class="alert-link">here</a> to add new department first.
+                    </div>
+            {{/if}}
         </article>
       </section>
 {{/partial}}

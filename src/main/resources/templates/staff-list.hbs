@@ -1,0 +1,31 @@
+{{#partial "content"}}
+
+        <section class="container">
+            <article>
+                <h5>All Staff</h5>
+                {{#if myStaff}}
+                <table class="table table-borderless  mx-auto table-sm text-small">
+                    <thead class="table-success">
+                    <tr><th>Name</th><th>Role</th><th>Responsibility</th><th class="text-center">Actions</th></tr>
+                    </thead>
+                    <tbody>
+                    {{#each myStaff}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{role}}</td>
+                        <td>{{responsibility}}</td>
+                        <td class="text-center">
+                            <a href="/staff/{{id}}/edit" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/staff/{{id}}/delete" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                {{/if}}
+            </article>
+        </section>
+
+{{/partial}}
+
+{{> layout.hbs}}

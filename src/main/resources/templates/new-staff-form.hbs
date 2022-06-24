@@ -1,0 +1,39 @@
+{{#partial "content"}}
+      <section class="container">
+        <article>
+          <fieldset class="bg-cloudy-blue p-3 rounded shadow-sm">
+            <legend>Add Staff</legend>
+            <form action="/staff/new" method="post" >
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Name">
+              </div>
+                <div class="mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <select name="department" id="department" class="form-control">
+                        <option value="">Select Department</option>
+                        {{#each myDepartments}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+              <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <input type="text" name="role" id="role" class="form-control" placeholder="Role">
+              </div>
+              <div class="mb-3">
+                <label for="responsibility" class="form-label">Responsibility</label>
+                <input type="text" name="responsibility" id="responsibility" class="form-control" placeholder="Responsibility">
+              </div>
+              <div class="mb-3 text-center">
+                <input type="submit" name="submit" id="responsibility" class="btn  btn-secondary" value="Save">
+              </div>
+  
+            </form> 
+
+          </fieldset>
+          
+        </article>
+      </section>
+{{/partial}}
+{{>layout.hbs}}

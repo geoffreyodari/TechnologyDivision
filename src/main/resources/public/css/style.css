@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.bg-cloudy-blue,.dropdown-menu{
+    background: rgb(205, 219, 245);
+    
+}
+
+.dropdown-menu{
+    border:none;
+}
+
+
+
+.list-group-item{
+    border-bottom: 0;
+    font-size: small;
+}
+
+fieldset{
+    width:400px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.hidden{
+    display:none;
+}

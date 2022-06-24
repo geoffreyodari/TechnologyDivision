@@ -1,0 +1,25 @@
+{{#partial "content"}}
+
+      <section class="container">
+        <article>
+      {{#if myDepartment}}
+          <fieldset class="bg-cloudy-blue p-3 rounded shadow-sm">
+            <legend>Update Department</legend>
+            <form action="/departments/{{myDepartment.id}}" method="post" >
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{myDepartment.name}}">
+              </div>
+       
+              <div class="mb-3 text-center">
+                <input type="submit" name="submit" id="responsibility" class="btn  btn-secondary" value="Save">
+              </div>
+  
+            </form> 
+
+          </fieldset>
+      {{/if}}
+        </article>
+      </section>
+{{/partial}}
+{{>layout.hbs}}

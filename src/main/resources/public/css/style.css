@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body{
     font-family: 'Poppins', sans-serif;
+    background: url("../images/background.png");
+      background-repeat: no-repeat;
+      background-size: cover;
     
 }
 
@@ -27,4 +30,8 @@ fieldset{
 
 .hidden{
     display:none;
+}
+
+article{
+    background-color:rgba(250,250,255,0.8);
 }

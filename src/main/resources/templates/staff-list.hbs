@@ -8,11 +8,25 @@
                     <a href="/department/{{id}}/staff" class="list-group-item list-group-item-action">{{name}}</a>
                     {{/each}}
                 </div>
-
+                <hr>
+                <div class="list-group list-group-flush">
+                    <a href="" class="list-group-item list-group-item-action">News</a>
+                    <a href="" class="list-group-item list-group-item-action">Mail</a>
+                </div>
             </aside>
             <article class="col-sm-12 col-lg-9">
+                <h5>Technology Division</h5>
+                <p>Businesses need employees skilled in the field of technology for several reasons. Most of all, they need a reliable source of support when computer-based systems fail. Our trained IT professionals can fix issues quickly, and allow  business to continue making money. </p>
+            {{#if myDepartments}}
+                <p>Our major areas of concern include: </p>
+                    <ol>
+                        {{#each myDepartments}}
+                            <li>{{name}}</li>
+                        {{/each}}
+                    </ol>
+            {{/if}}
                 {{#if myDepartment}}
-                    <h5>{{myDepartment.name}} Staff</h5>
+                    <h5>{{myDepartment.name}} Department Staff</h5>
                 {{else}}
                 <h5>All Staff</h5>
                 {{/if}}
@@ -35,6 +49,11 @@
                     {{/each}}
                     </tbody>
                 </table>
+                {{else}}
+                    <div class="alert alert-warning mt-3" role="alert">
+                        We do not have any staff at the moment. Click  <a href="/staff/new" class="alert-link">here</a>.to add new staff.
+                    </div>
+
                 {{/if}}
             </article>
         </section>

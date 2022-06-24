@@ -135,6 +135,7 @@ public class App {
             Map<String,Object> model = new HashMap<>();
             model.put("myStaff",staffDao.getByDepartment(departmentId));
             model.put("myDepartments",departmentsDao.getAll());
+            model.put("myDepartment",departmentsDao.findById(departmentId));
             return new ModelAndView(model,"staff-list.hbs");
         },new HandlebarsTemplateEngine());
 
